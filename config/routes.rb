@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '' do
+
+  subdomain = ENV['SUBDOMAIN'] || 'api'
+
+  namespace :api, defaults: { format: :json }, constraints: { subdomain: subdomain }, path: '' do
     namespace :me do
       jsonapi_resources :tasks do
         get :export, on: :collection
