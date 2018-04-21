@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tasks export <%= date_range %></title>
+    <style media="screen">
+      li {
+        color: green;
+      }
+
+      .under-preferred-working-hours li {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Task export for <%= user.username %></h1>
+    <h2><%= date_range %></h2>
+    <p>
+      <strong>Preferred working hours per day:</strong> <%= format_time user.preferred_working_hours_per_day %>
+    </p>
+
+    <% groups.each do |group| %>
+      <h3><%= group.date %> - total: <%= format_time group.total_time %></h3>
+
+      <ul class="<%= group.under_preferred_working_hours ? 'under-preferred-working-hours':''  %>">
+        <% group.tasks.each do |task| %>
+          <li>
+            <h4><%= task.title %> - <%= format_time task.duration %></h4>
+            <% if task.description %>
+              <p><%= task.description.gsub(/\n/, '<br />') %></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </body>
+</html>
