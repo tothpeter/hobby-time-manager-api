@@ -34,5 +34,7 @@ Rails.application.routes.draw do
     get 'tasks_export'
   end
 
+  get '*path', to: 'pages#index'
+
   root 'pages#index'
 end
