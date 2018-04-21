@@ -33,4 +33,6 @@ Rails.application.routes.draw do
   namespace :development do
     get 'tasks_export'
   end
+
+  root 'pages#index'
 end
