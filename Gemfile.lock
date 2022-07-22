@@ -177,7 +177,7 @@ GEM
     tiddle (1.0.2)
       activerecord (>= 4.2.0)
       devise (>= 4.0.0.rc1, < 4.4)
-    tzinfo (1.2.5)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     warden (1.2.7)
       rack (>= 1.0)
